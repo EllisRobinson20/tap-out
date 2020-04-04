@@ -48,7 +48,7 @@ def create_mongodatabase():
                 "email": "lee@google.com",
                 "id": 33,
                 "name": "Lee Ellis",
-                "password": "ass_word"
+                "password": "pass_word"
                 })
 
             db_products.insert({
