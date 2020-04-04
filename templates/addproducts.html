@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>Ratings Application</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+  </head>
+  <body><!-- onload="fillPage() -->
+    <form>
+    <div class="navbar">
+    <div class="navbar-inner">
+            <a class="brand" href="#">Ratings App Prototype</a>
+        </div>
+    </div>
+    </form>
+    <form method="post" enctype=multipart/form-data action="{{url_for('upload')}}">
+      <p class="lead"> Choose an image for your product</p>
+      <input type="file" name="image">
+      <input type="submit"  value="add file">
+    </form>
+    <form method="POST" data-bind="submit: addProduct" enctype=multipart/form-data action="{{url_for('upload')}}">
+    
+    
+    <div id="main" class="container">
+
+      <table class="table table-striped">
+        Name: <input data-bind="value: name" placeholder="Name of the product" type="text"/>
+            </div>
+            <div>
+        Price: <input data-bind="value: price" placeholder="price amount (£)" type=""></input>
+            </div>
+            <div>
+        Image: <div class="input-group mb-3">
+              <div class="custom-file">
+                <input id="fileInput" data-bind="value: image" placeholder="{{message}}" type="file" name="image" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+               
+              </div>
+            </div>
+            </div>
+            <div>
+        Category: <input data-bind="value: category" type="text" placeholder="Product category"></input>
+            </div>
+            <div>
+        Description: <textarea data-bind="value: description" rows="4" cols="50" placeholder="Description"></textarea> 
+            </div>
+            <input type="submit" value="Add Product">
+          </table>
+</form>
+    <ul data-bind="foreach: product_list, visible: product_list().length > 0">
+      <li>
+        <h4>Product name:{{message}}</h4>
+  <p data-bind="text: name"></p><br>
+  <h4>Price:</h4>
+  <p data-bind="text: price"></p>
+  <p data-bind="text: image"></p>
+  <img data-bind="attr:{src: image}">
+  <h4>Release date:</h4>
+  <p data-bind="text: timestamp"></p>
+  <h4>Product category:</h4>
+  <p data-bind="text: category"></p>
+  <h4>Description:</h4>
+  <p data-bind="text: description"></p>
+      </li>
+    </ul>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <!-- <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script> -->
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='products.js') }}"></script>
+  </body>
+</html>
